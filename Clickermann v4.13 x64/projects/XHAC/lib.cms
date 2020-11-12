@@ -1,0 +1,256 @@
+﻿// 17.09.2019
+#name "LIB_MULTI_KEY"
+LOGSHOW (3, 200,200)
+//print("LIB_MULTI_KEY","//<MK_>- Сокрашение")
+/////////////////////////////////
+//print("$MK_p_TimeWait = 25","//МинимальноеВремяОжиданияРазжатияКлавиши")
+$MK_p_TimeWait = 20
+
+//print("sub(MK_WAIT_KEYUP,$localkey)","//ОжиданиеРазжатияКлавиши")
+sub(MK_WAIT_KEYUP,$localkey)
+   while(ISKEYDOWN($localkey)==1)
+      WAITMS($MK_p_TimeWait)
+   END_CYC
+   WAITMS($MK_p_TimeWait);
+end_sub
+
+//print("sub(MK_WAIT_KEYDOWN,$localkey)","//ОжиданиеРазжатияКлавиши")
+sub(MK_WAIT_KEYDOWN,$localkey)
+   while(ISKEYDOWN($localkey)==0)
+      WAITMS($MK_p_TimeWait)
+   END_CYC
+   WAITMS($MK_p_TimeWait);
+end_sub
+
+//print("sub(MK_PRESS,$localkey)","//ОдиночноеНажатиеКлавиши")
+sub(MK_PRESS,$localkey)
+   KEYDOWN($localkey)
+   MK_WAIT_KEYDOWN($localkey)
+   KEYUP($localkey1)
+   MK_WAIT_KEYUP($localkey)
+end_sub
+//MK_PRESS(#V)
+
+//print("sub(MK_PRESSCOMBO,$localkey1,$localkey2)","//КомбинацияИзДвухКлавиш")
+sub(MK_PRESSCOMBO,$localkey1,$localkey2)
+   KEYDOWN($localkey1)
+   MK_WAIT_KEYDOWN($localkey1)
+      KEYDOWN($localkey2)
+      MK_WAIT_KEYDOWN($localkey2)
+      KEYUP($localkey2)
+      MK_WAIT_KEYUP($localkey2)   
+   KEYUP($localkey1)
+   MK_WAIT_KEYUP($localkey1)   
+end_sub
+//MK_PRESSCOMBO(#SHIFT,#HOME)
+////////////////////////////////////////////////////////////
+//Будет время - воткнуть проверку языка
+//print("sub(MK_ENTER)","//Нажатие на #ENTER") 
+sub(MK_ENTER)
+   MK_PRESS(#ENTER)
+end_sub
+//print("sub(MK_CTRL_C)","//КОПИПАСТИНГ") 
+sub(MK_CTRL_C)
+   MK_PRESSCOMBO(#CTRL,#C)
+end_sub
+//print("sub(MK_CTRL_V)","//КОПИПАСТИНГ") 
+sub(MK_CTRL_V)
+   MK_PRESSCOMBO(#CTRL,#V)
+end_sub
+//print("sub(MK_SHIFT_HOME)","//") 
+sub(MK_SHIFT_HOME)
+   MK_PRESSCOMBO(#SHIFT,#HOME)
+end_sub
+
+//print("sub(MK_COMMAS)","//Втыкает двойные кавычки") 
+sub(MK_COMMAS)
+   MK_PRESSCOMBO(#SHIFT,222)
+end_sub
+//print("sub(MK_END)","#END") 
+sub(MK_END)
+   MK_PRESS(#END)
+end_sub
+//print("sub(MK_HOME)","#HOME") 
+sub(MK_HOME)
+   MK_PRESS(#HOME)
+end_sub
+ 
+
+//print("sub(MK_BACKSPACE)","#BACKSPACE") 
+sub(MK_BACKSPACE)
+   MK_PRESS(#BACKSPACE)
+end_sub
+//print("sub(MK_SHARP)","#") 
+sub(MK_SHARP)
+   MK_PRESSCOMBO(#SHIFT,3)
+end_sub
+//print("sub(MK__)","//_")
+sub(MK__)
+   MK_PRESSCOMBO(#SHIFT,189)
+end_sub
+
+//print("sub(MK_TAB)","//TAB")
+sub(MK_TAB)
+MK_PRESS(#TAB)
+end_sub
+
+//print("sub(MK_ENTER)","//ENTER")
+sub(MK_ENTER)
+MK_PRESS(#ENTER)
+end_sub
+
+//print("sub(MK_SHIFT )","//SHIFT ")
+sub(MK_SHIFT )
+MK_PRESS(#SHIFT )
+end_sub
+
+//print("sub(MK_CTRL )","//CTRL ")
+sub(MK_CTRL )
+MK_PRESS(#CTRL )
+end_sub
+//print("sub(MK_ALT )","//ALT ")
+sub(MK_ALT )
+MK_PRESS(#ALT )
+end_sub
+//print("sub(MK_PAUSE )","//PAUSE ")
+sub(MK_PAUSE )
+MK_PRESS(#PAUSE )
+end_sub
+//print("sub(MK_CAPSLOCK )","//CAPSLOCK ")
+sub(MK_CAPSLOCK )
+MK_PRESS(#CAPSLOCK )
+end_sub
+//print("sub(MK_ESC )","//ESC ")
+sub(MK_ESC )
+MK_PRESS(#ESC )
+end_sub
+//print("sub(MK_SPACE )","//SPACE ")
+sub(MK_SPACE )
+MK_PRESS(#SPACE )
+end_sub
+////////////////////////////////////////////////////////////
+//print("sub(MK_PAGEUP )","//PAGEUP ")
+sub(MK_PAGEUP )
+MK_PRESS(#PAGEUP )
+end_sub
+//print("sub(MK_PAGEDOWN )","//PAGEDOWN ")
+sub(MK_PAGEDOWN )
+MK_PRESS(#PAGEDOWN )
+end_sub
+////////////////////////////////////////////////////////////
+//print("sub(MK_LEFT )","LEFT ")
+sub(MK_LEFT )
+MK_PRESS(#LEFT )
+end_sub
+//print("sub(MK_UP )","UP ")
+sub(MK_UP )
+MK_PRESS(#UP )
+end_sub
+//print("sub(MK_RIGHT )","RIGHT ")
+sub(MK_RIGHT )
+MK_PRESS(#RIGHT )
+end_sub
+//print("sub(MK_DOWN )","DOWN ")
+sub(MK_DOWN )
+MK_PRESS(#DOWN )
+end_sub
+////////////////////////////////////////////////////////////
+//print("sub(MK_INSERT)","INSERT")
+sub(MK_INSERT)
+MK_PRESS(#INSERT)
+end_sub
+//print("sub(MK_DELETE )","DELETE ")
+sub(MK_DELETE )
+MK_PRESS(#DELETE )
+end_sub
+
+
+
+////////////////////////////////////////////////////////////
+//ИнициализацияМассиваСтрокДляВыводаТекстаСКлавиатуры
+//print("ARRPUSH($MK_p_ArrSrt,MK_ENTER)","//ИнициализацияМассивСтрокДляВыводаТекстаСКлавиатуры")
+
+//print("sub(MK_KEYSTRING)","//Метод отрисовки стека строк $MK_p_ArrSrt")
+sub(MK_KEYSTRING)
+   while(ArrSize($MK_p_ArrSrt)!=0)
+			$str=ARRPOP($MK_p_ArrSrt)   
+			switch($str)
+      case("MK_CTRL_V")
+         MK_CTRL_V()
+      case("MK_SHARP")
+         MK_SHARP()
+      case("MK_COMMAS")
+         MK_COMMAS()
+      case("MK_ENTER")
+         MK_ENTER()
+      case(0)//Обработчикпустых значений
+         WAITMS ($MK_p_TimeWait);
+      case("00")//Обработчикпустых значений
+         WAITMS ($MK_p_TimeWait);      
+      default
+         KEYSTRING($str)
+      end_switch
+      WAITMS ($MK_p_TimeWait);
+   END_CYC   
+end_sub
+//print("sub(MK_)","//Нулячая заглушка на случай криварукости")
+sub(MK_)
+end_sub
+//print("sub(MK_0)","//Нулячая заглушка на случай криварукости")
+sub(MK_0)
+end_sub
+//print("sub(MK_1,$a1)","//Метод отрисовки стека строк $MK_p_ArrSrt//Стек предварительно докидывается передаваемыми переменными")
+sub(MK_1,$a1)
+   ARRPUSH($MK_p_ArrSrt,$a1)
+   MK_KEYSTRING()
+end_sub
+//print("sub(MK_2,$a1,$a2)","///...")
+sub(MK_2,$a1,$a2)
+   ARRPUSH($MK_p_ArrSrt,$a2)
+   MK_1($a1)
+end_sub
+//print("sub(MK_3,$a1,$a2,$a3)","///...")
+sub(MK_3,$a1,$a2,$a3)
+   ARRPUSH($MK_p_ArrSrt,$a3)
+   MK_2($a1,$a2)
+end_sub
+//print("sub(MK_4,$a1,$a2,$a3,$a4)","///...")
+sub(MK_4,$a1,$a2,$a3,$a4)
+   ARRPUSH($MK_p_ArrSrt,$a4)
+   MK_3($a1,$a2,$a3)
+end_sub    
+//print("sub(MK_5,$a1,$a2,$a3,$a4,$a5)","///...")
+sub(MK_5,$a1,$a2,$a3,$a4,$a5)
+   ARRPUSH($MK_p_ArrSrt,$a5)
+   MK_4($a1,$a2,$a3,$a4)
+end_sub
+//print("sub(MK_6,$a1,$a2,$a3,$a4,$a5,$a6)","///...")
+sub(MK_6,$a1,$a2,$a3,$a4,$a5,$a6)
+   ARRPUSH($MK_p_ArrSrt,$a6)
+   MK_5($a1,$a2,$a3,$a4,$a5)
+end_sub
+//print("sub(MK_7,$a1,$a2,$a3,$a4,$a5,$a6,$a7)","///...")
+sub(MK_7,$a1,$a2,$a3,$a4,$a5,$a6,$a7)
+   ARRPUSH($MK_p_ArrSrt,$a7)
+   MK_6($a1,$a2,$a3,$a4,$a5,$a6)
+end_sub
+//print("sub(MK_8,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8)","///...")
+sub(MK_8,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8)
+   ARRPUSH($MK_p_ArrSrt,$a8)
+   MK_7($a1,$a2,$a3,$a4,$a5,$a6,$a7)
+end_sub
+//print("sub(MK_9,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9)","///...")
+sub(MK_9,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9)
+   ARRPUSH($MK_p_ArrSrt,$a9)
+   MK_8($a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8)
+end_sub
+/////////////////////////////////////////////////////////////
+
+MK_HOME()
+MK_SHIFT_HOME()
+MK_DELETE()
+MK_BACKSPACE()
+MK_SPACE()
+
+print("halt - Выполнение закончено");
+halt //Одноразовое выполнение   

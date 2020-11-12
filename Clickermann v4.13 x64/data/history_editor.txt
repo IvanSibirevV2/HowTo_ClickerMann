@@ -1,0 +1,5 @@
+﻿C:\D\YandexDisk\Distr\Дистрибутивы всякие\Clickermann\Clickermann v4.13\Clickermann v4.13 x64\йцу.cms
+C:\D\YandexDisk\Distr\Дистрибутивы всякие\Clickermann\Clickermann v4.13\Clickermann v4.13 x64\йцу2.cms
+C:\D\YandexDisk\Distr\Дистрибутивы всякие\Clickermann\Clickermann v4.13\Clickermann v4.13 x64\projects\XHAC\MonkeyText.cms
+C:\D\YandexDisk\Distr\Дистрибутивы всякие\Clickermann\Clickermann v4.13\Clickermann v4.13 x64\projects\XHAC\MonkeyTest001.cms
+C:\D\YandexDisk\Distr\Дистрибутивы всякие\Clickermann\Clickermann v4.13\Clickermann v4.13 x64\projects\XHAC\lib.cms

@@ -1,0 +1,35 @@
+﻿// 07.06.2019
+#name "New Script"
+LOGCLEAR();
+print("Hello, world!");
+
+getscreen
+
+
+//IF_PICTURE_IN(10,20, 600, 600, "pict.bmp",-1,50)
+// move($_return1, $_return2)
+// print($_return1,":", $_return2)
+//END_IF
+
+//IF_PICTURE_IN (0,0, $_xmax,$_ymax, "shit.bmp", 2366701)
+IF_PICTURE_IN (0,0, 1900,1000, "2019-06-07_09-42-50.bmp",-1,80)
+  print("found at X=", $_return1, ", Y=", $_return2)
+  move($_return1+4, $_return2+4)
+else
+  print("not found")  
+END_IF
+
+halt
+
+
+// поиск изображения pict.bmp в области 0,0 - 1250,959
+
+//scanpicture($var, 0,0, 1250,959, "pict.bmp")
+//scanpicture($var, 0,0, 1250,959, "000.bmp");
+
+// вывод массива, содержащего результаты поиска
+//while (arrsize($var) > 0)
+//  $y = arrpop($var)
+//  $x = arrpop($var)
+//  print($x,":", $y)
+//end_cyc

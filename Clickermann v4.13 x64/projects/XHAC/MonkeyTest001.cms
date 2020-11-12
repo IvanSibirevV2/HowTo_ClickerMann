@@ -1,0 +1,200 @@
+﻿#name "MonkeyTest001.cms"
+//////////////////////////////////
+sub(mWobble,$p_delto,$p_TimeWait,$p_repeat)
+   FOR($a=0, $a < $p_repeat)
+      move($_xmouse+$p_delto, $_ymouse)
+      WAITMS ($p_TimeWait);  
+      move($_xmouse, $_ymouse+$p_delto)
+      WAITMS ($p_TimeWait);
+      move($_xmouse-$p_delto, $_ymouse)
+      WAITMS ($p_TimeWait);
+      move($_xmouse, $_ymouse-$p_delto)
+      WAITMS ($p_TimeWait);
+   END_CYC
+end_sub
+/////////////////////////////////
+sub(mlclick,$mx,$my,$p_TimeWait)
+  move($mx,$my)
+  WAITMS ($p_TimeWait);  
+ 	lclick($mx,$my);
+	WAITMS ($p_TimeWait);
+end_sub
+sub(mKEYPRESS,$mk,$p_TimeWait)
+   KEYPRESS($mk)
+   WAITMS ($p_TimeWait);
+end_sub
+sub(mKEYPRESSCombo,$mk1,$mk2,$p_TimeWait)
+   KEYDOWN ($mk1)
+   WAITMS ($p_TimeWait);
+   mKEYPRESS($mk2,$p_TimeWait)   
+   KEYUP ($mk1)
+   WAITMS ($p_TimeWait);
+end_sub
+/////////////////////////////////
+sub(Step_1,$p_TimeWait) //Вод пароля
+   WHILE(wndfind("Подключение к БД")==0)
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("Подключение к БД"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("Подключение к БД"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("Подключение к БД"), $var1, $var2, $var3, $var4);
+   WNDBUMP(wndfind("Подключение к БД"));
+	 mlclick(10, 10,$p_TimeWait)
+   mlclick(171, 71,$p_TimeWait)
+   mKEYPRESS(#END,$p_TimeWait)
+   mKEYPRESSCombo(#SHIFT,#HOME,$p_TimeWait)   
+   mKEYPRESSCombo(#CTRL,#C,$p_TimeWait)
+   mlclick(176, 104,$p_TimeWait)
+   mKEYPRESSCombo(#CTRL,#V,$p_TimeWait)
+   mlclick(160, 145,$p_TimeWait)
+end_sub
+sub(Step_2,$p_TimeWait) //пОДТВЕРЖДЕНИЕ СООБЩЕНЛЬЗОВАТЕЛЮ
+   WHILE(wndfind("Сообщение пользователю")==0)
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("Сообщение пользователю"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("Сообщение пользователю"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("Сообщение пользователю"), $var1, $var2, $var3, $var4);
+   WNDBUMP(wndfind("Сообщение пользователю"));
+   mlclick(10, 10,$p_TimeWait)
+   mlclick(572, 155,$p_TimeWait)
+end_sub
+   sub(Step_3,$p_TimeWait) //вЫБОР МЕНЮ
+   WHILE(wndfind("АСКИД-ТНП-3. АО")==0)
+   END_CYC
+   mlclick(54, 27,$p_TimeWait)
+   mlclick(100, 50,$p_TimeWait)
+end_sub
+sub(Step_4,$p_TimeWait) //Установка транс балтика
+   mlclick(489, 75,$p_TimeWait)
+   WHILE(wndfind("Подразделение")==0)        
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("Подразделение"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("Подразделение"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("Подразделение"), $var1, $var2, $var3, $var4);
+   WNDBUMP(wndfind("Подразделение"));
+   FOR($b=0, $b < 15)
+      mKEYPRESS(#PAGEUP,$p_TimeWait)
+   END_CYC
+   FOR($b=0, $b < 15)
+      mKEYPRESS(#DOWN,$p_TimeWait)
+   END_CYC   
+   mKEYPRESS(#ENTER,$p_TimeWait)
+end_sub
+sub(Step_5,$p_TimeWait) //Установка прихода по договору хранения
+   mlclick(729, 76,$p_TimeWait)
+   WHILE(wndfind("ТУО")==0)        
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("ТУО"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("ТУО"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("ТУО"), $var1, $var2, $var3, $var4);
+   WNDBUMP(wndfind("ТУО"));
+   FOR($a=0, $a < 34)
+      mKEYPRESS(#DOWN,$p_TimeWait)
+   END_CYC   
+   mKEYPRESS(#ENTER,$p_TimeWait)
+end_sub
+sub(Step_6,$p_TimeWait) //Установка прихода по договору хранения
+   mlclick(1020, 76,$p_TimeWait)
+   WHILE(wndfind("Вид собственности")==0)        
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("Вид собственности"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("Вид собственности"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("Вид собственности"), $var1, $var2, $var3, $var4);
+   WNDBUMP(wndfind("Вид собственности"));
+   FOR($a=0, $a < 2)
+      mKEYPRESS(#DOWN,$p_TimeWait)
+   END_CYC   
+   mKEYPRESS(#ENTER,$p_TimeWait)
+end_sub
+sub(Step_7,$p_TimeWait) //Установка даты
+   mlclick(205, 74,$p_TimeWait)
+   mlclick(928, 409,$p_TimeWait)
+   mlclick(964, 682,$p_TimeWait)
+end_sub
+sub(Step_8,$p_TimeWait) //дОБАВЛЕНИЕ ЗАПИСИ
+
+   mlclick(1056, 74,$p_TimeWait)
+   //уСТАНОВКА ПРОДУКТА   
+	 WAITMS (500);
+	 //Втыкание размера окна 
+//   WNDSETINFO(wndfind("Ввод данных по ТУО"), 0, 0, 1000, 1000)
+   WHILE(wndfind("Ввод данных по ТУО")==0)        
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("Ввод данных по ТУО"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("Ввод данных по ТУО"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("Ввод данных по ТУО"), $var1, $var2, $var3, $var4);
+   WNDBUMP(wndfind("Ввод данных по ТУО"));
+   mlclick(494, 150,$p_TimeWait)//Установка типа бензина
+   WHILE(wndfind("Продукт")==0)        
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("Продукт"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("Продукт"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("Продукт"), $var1, $var2, $var3, $var4);
+   WNDBUMP(wndfind("Продукт"));
+   FOR($a=0, $a < 6)
+      mKEYPRESS(#DOWN,$p_TimeWait)
+   END_CYC
+   mKEYPRESS(#ENTER,$p_TimeWait)
+   mlclick(491, 182,$p_TimeWait)
+   WHILE(wndfind("Назначение поставки")==0)        
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("Назначение поставки"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("Назначение поставки"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("Назначение поставки"), $var1, $var2, $var3, $var4);
+   WNDBUMP(wndfind("Назначение поставки"));
+
+   mKEYPRESS(#DOWN,$p_TimeWait)
+   mKEYPRESS(#ENTER,$p_TimeWait)
+
+   mlclick(489, 208,$p_TimeWait)
+   WHILE(wndfind("НПЗ")==0)        
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("НПЗ"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("НПЗ"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("НПЗ"), $var1, $var2, $var3, $var4);
+   WNDBUMP(wndfind("НПЗ"));
+   FOR($a=0, $a < 43)
+      mKEYPRESS(#DOWN,$p_TimeWait)
+   END_CYC
+   mKEYPRESS(#ENTER,$p_TimeWait)   
+   mlclick(495, 235,$p_TimeWait)
+   WHILE(wndfind("ПСП")==0)        
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("ПСП"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("ПСП"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("ПСП"), $var1, $var2, $var3, $var4);
+   WNDBUMP(wndfind("ПСП"));
+   FOR($a=0, $a < 241)
+      mKEYPRESS(#DOWN,$p_TimeWait)
+   END_CYC
+   mKEYPRESS(#ENTER,$p_TimeWait)
+   mlclick(494, 264,$p_TimeWait)
+   WHILE(wndfind("Договор")==0)        
+   END_CYC //Ожидание появления окна
+   WNDGETINFO(wndfind("Договор"), $var1, $var2, $var3, $var4);
+   WNDSETINFO(wndfind("Договор"), $var1-$var1, $var2-$var2, $var3, $var4);
+   WNDGETINFO(wndfind("Договор"), $var1, $var2, $var3, $var4);
+	 WNDBUMP(wndfind("Договор"));
+   FOR($b=0, $b < 163)
+      mKEYPRESS(#DOWN,$p_TimeWait)
+   END_CYC
+   mKEYPRESS(#ENTER,$p_TimeWait)
+   mlclick(1094, 730,$p_TimeWait)
+   mlclick(219, 344,$p_TimeWait)//Установка массы по документам
+   KEYSTRING("10")
+   WAITMS ($p_TimeWait);
+   mlclick(936, 659,$p_TimeWait)//Выход	    
+end_sub
+/////////////////////////////////
+LOGCLEAR();
+Step_1(50); //Вод пароля
+Step_2(50); //пОДТВЕРЖДЕНИЕ СООБЩЕНЛЬЗОВАТЕЛЮ
+Step_3(50);
+Step_4(50); //Установка транс балтика
+Step_5(50); //Установка прихода по договору хранения
+Step_6(50); //Установка клиентский баланс
+Step_7(50); //Установка даты
+Step_8(50); //Добавление записи
+mWobble(5,50,10);
+	
+
+halt; //Одноразовое выполнение

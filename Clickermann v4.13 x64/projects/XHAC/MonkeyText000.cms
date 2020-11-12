@@ -1,0 +1,199 @@
+﻿// 17.09.2019
+#name "MonkeyText"
+/////////////////////////////////
+$p_TimeWait = 25
+/////////////////////////////////
+sub(mKEYPRESS,$mk)
+   KEYPRESS($mk)
+   while(ISKEYDOWN($mk))
+      WAITMS($p_TimeWait)
+   END_CYC
+   WAITMS($p_TimeWait);
+end_sub
+sub(mKEYPRESSCombo,$mk1,$mk2)
+   KEYDOWN($mk1)
+   WAITMS($p_TimeWait);
+   mKEYPRESS($mk2,$p_TimeWait)   
+   KEYUP($mk1)
+   while(ISKEYDOWN($mk1))
+      WAITMS($p_TimeWait)
+   END_CYC
+   WAITMS($p_TimeWait)   
+end_sub
+/////////////////////////////////
+sub(ARR_KEYSTRING,$arr)
+   $Length = ArrSize($arr)
+   FOR($a=0, $a < $Length)
+      $str=ARRPOP($arr)
+			switch($str)
+      case("KP_COMMAS")
+         mKEYPRESSCombo(#SHIFT,222)//Втыкает двойные кавычки
+      case("KP_ENTER")
+         mKEYPRESS(#ENTER)
+//         WAITMS ($p_TimeWait);
+      case("KP_ENTER")
+         mKEYPRESS(#ENTER)
+//         WAITMS ($p_TimeWait);
+      case("00")
+         WAITMS ($p_TimeWait);      
+      default
+         KEYSTRING($str)
+      end_switch
+      WAITMS ($p_TimeWait);			         
+   END_CYC
+end_sub
+/////////////////////////////////
+LOGCLEAR();
+/////////////////////////////////
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"System")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"System.IO")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"System.Data")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"System.Drawing")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"System.Globalization")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"System.Collections.Generic")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"EleWise.ELMA.Model.Managers")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"EleWise.ELMA.Workflow.Models")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"EleWise.ELMA.Workflow.Managers")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"EleWise.ELMA")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"Aspose.Cells")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"EleWise.ELMA.Web.Mvc.Html")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"EleWise.ELMA.Web.Mvc.Extensions")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"EleWise.ELMA.BPM.Web.Reports.Extensions")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"EleWise.ELMA.BPM.Web.Reports.Models.ReportParametersInfo")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"model")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,"(Html.TableForm(EleWise.ELMA.Model.Views.ViewType.Create))")
+ARRPUSH($arr," ")
+ARRPUSH($arr,"using")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,{)
+ARR_KEYSTRING($arr)
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,")")
+ARRPUSH($arr,KP_COMMAS)
+ARRPUSH($arr,"Parameters.EndDate")
+ARRPUSH($arr,KP_COMMAS)
+ARRPUSH($arr,"Html.EditableProperty(")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,")")
+ARRPUSH($arr,KP_COMMAS)
+ARRPUSH($arr,"Parameters.StartDate")
+ARRPUSH($arr,KP_COMMAS)
+ARRPUSH($arr,"Html.EditableProperty(")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,")")
+ARRPUSH($arr,KP_COMMAS)
+ARRPUSH($arr,"Parameters.File")
+ARRPUSH($arr,KP_COMMAS)
+ARRPUSH($arr,"Html.EditableProperty(")
+ARRPUSH($arr,@)
+ARR_KEYSTRING($arr)
+////
+ARRPUSH($arr,KP_ENTER)
+ARRPUSH($arr,})
+ARR_KEYSTRING($arr)
+//KP_using("EleWise.ELMA.BPM.Web.Reports.Extensions")
+//KP_using("System.Data")
+//KP_using("EleWise.ELMA.Web.Mvc.Html")
+//@model EleWise.ELMA.BPM.Web.Reports.Models.ReportParametersInfo
+/////////////////////////////////
+print("halt - Выполнение закончено");
+halt //Одноразовое выполнение             

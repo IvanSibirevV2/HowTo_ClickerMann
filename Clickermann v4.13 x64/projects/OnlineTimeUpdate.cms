@@ -1,0 +1,45 @@
+﻿#autorun
+#logfile "logfile.txt"
+
+SUB(mouseChillHelp,$t)
+ $d = int(10)
+ MOVER($d,$d)
+ WAITMS ($t)
+ MOVER(0-$d,$d)
+ WAITMS ($t)
+ MOVER(-$d,0-$d)
+ WAITMS ($t)
+ MOVER($d,-$d)
+ WAITMS ($t)        
+END_SUB
+SUB(mouseChill,$i)
+ FOR($a=0, $a < $i)
+  mouseChillHelp(50)
+ END_CYC          
+END_SUB 
+///////////////////////
+ LOGCLEAR
+ 
+ LCLICK($_xmax-50,$_ymax-20)
+ WAITMS (50)
+ LCLICK(1750,1000)
+ WHILE(WNDFIND("Дата и время")=0)
+ END_CYC
+ WNDGETINFO (WNDFIND("Дата и время"), $var1, $var2, $var3, $var4)
+ WNDSETINFO (WNDFIND("Дата и время"), 0, 0, $var3, $var4)
+ LCLICK(330,50)
+ WAITMS (50)
+ LCLICK(356,290)
+ WHILE(WNDFIND("Настройка времени по Интернету")=0)
+ END_CYC
+ WNDGETINFO (WNDFIND("Настройка времени по Интернету"), $var1, $var2, $var3, $var4)
+ WNDSETINFO (WNDFIND("Настройка времени по Интернету"), 0, 0, $var3, $var4)
+ LCLICK(360,100)
+ WAITMS (50)
+ mouseChill(25)
+ LCLICK(414,3)
+ WAITMS (50)
+ LCLICK(425,9)
+ WAITMS (50)
+ mouseChill(5)
+HALT(1)

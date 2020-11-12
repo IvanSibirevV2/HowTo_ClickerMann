@@ -1,0 +1,15 @@
+﻿//УдалитьСимволВоВсемСтолбике
+FOR($a=0, $a < 5)
+ 
+ FOR($b=0, $b < 1)
+  KEYPRESS(#DELETE)
+ END_CYC 
+ KEYPRESS(#DOWN)
+END_CYC
+
+FOR($b=0, $b < 15)
+ KEYPRESS(#PAGEUP)
+END_CYC
+
+BEEP(800,200)
+halt //Одноразовое выполнение
