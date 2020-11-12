@@ -58,6 +58,7 @@
       #SCROLLLOCK;	KEYPRESS(#SCROLLLOCK);
       #PRINTSCREEN;	KEYPRESS(#PRINTSCREEN);
       #PAUSE;	KEYPRESS(#PAUSE);
+	   
   }
   -;
   KEYPRESS - Нажать клавишу;		KEYPRESS(#A);
@@ -69,6 +70,7 @@
   GETKEYSDOWN - Поместить в массив зажатые клавиши;	GETKEYSDOWN ($arr);
   GETKBLAYOUT - Получить код раскладки;	GETKBLAYOUT($_hwnd) //1033 En 1049 Ru;
   SETKBLAYOUT - Установить код раскладки;	SETKBLAYOUT($_hwnd, 1033) //1033 En 1049 Ru;
+  -;
 }
   
 

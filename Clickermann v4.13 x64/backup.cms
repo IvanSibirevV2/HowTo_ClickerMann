@@ -1,16 +1,19 @@
-﻿//УдалитьСимволВоВсемСтолбике
-FOR($a=0, $a < 5)
- 
- FOR($b=0, $b < 1)
-  KEYPRESS(#DELETE)
- END_CYC 
- KEYPRESS(#DOWN)
-END_CYC
+﻿// 12.11.2020
+#name "New Script"
 
-FOR($b=0, $b < 15)
- KEYPRESS(#PAGEUP)
-END_CYC
+KEYDOWN (#CTRL)
+WAITMS (50)
+KEYPRESS (#n)
+KEYUP (#CTRL)
 
-BEEP(800,200)
-halt //Одноразовое выполнение
+
+KEYDOWN (#CTRL)
+WAITMS (50)
+KEYPRESS (#v)
+KEYUP (#CTRL)
+
+HALT
+
+
+
 
